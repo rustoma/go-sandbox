@@ -42,7 +42,6 @@ func handleApiCall3(wg *sync.WaitGroup, ch *chan string) {
 	wg.Done()
 }
 
-func handleApiCall11(wg *sync.WaitGroup, ch *chan string) {
 func handleApiCall0(wg *sync.WaitGroup, ch *chan string) {
 	time.Sleep(time.Millisecond * 120)
 	*ch <- "Fourth api call"
