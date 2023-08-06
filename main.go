@@ -15,7 +15,7 @@ func main() {
 	go handleApiCall(&wg, &ch)
 	go handleApiCall2(&wg, &ch)
 	go handleApiCall3(&wg, &ch)
-	go handleApiCall11(&wg, &ch)
+	go handleApiCall0(&wg, &ch)
 
 	close(ch)
 
@@ -43,6 +43,7 @@ func handleApiCall3(wg *sync.WaitGroup, ch *chan string) {
 }
 
 func handleApiCall11(wg *sync.WaitGroup, ch *chan string) {
+func handleApiCall0(wg *sync.WaitGroup, ch *chan string) {
 	time.Sleep(time.Millisecond * 120)
 	*ch <- "Fourth api call"
 	wg.Done()
