@@ -8,13 +8,14 @@ import (
 
 func main() {
 	var wg sync.WaitGroup
-	ch := make(chan string, 3)
+	ch := make(chan string, 4)
 
-	wg.Add(3)
+	wg.Add(4)
 
 	go handleApiCall(&wg, &ch)
 	go handleApiCall2(&wg, &ch)
 	go handleApiCall3(&wg, &ch)
+	go handleApiCall4(&wg, &ch)
 
 	close(ch)
 
@@ -38,5 +39,11 @@ func handleApiCall2(wg *sync.WaitGroup, ch *chan string) {
 func handleApiCall3(wg *sync.WaitGroup, ch *chan string) {
 	time.Sleep(time.Millisecond * 100)
 	*ch <- "Third api call"
+	wg.Done()
+}
+
+func handleApiCall4(wg *sync.WaitGroup, ch *chan string) {
+	time.Sleep(time.Millisecond * 120)
+	*ch <- "Fourth api call"
 	wg.Done()
 }
