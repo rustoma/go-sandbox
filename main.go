@@ -7,9 +7,10 @@ import (
 )
 
 func main() {
+	file1 := "Super file 1"
 	var wg sync.WaitGroup
 	ch := make(chan string, 4)
-
+	file := "Super file 2"
 	wg.Add(4)
 
 	go handleApiCall(&wg, &ch)
@@ -18,6 +19,10 @@ func main() {
 	go handleApiCall0(&wg, &ch)
 
 	close(ch)
+
+	addedFile := file1 + file
+
+	_ = addedFile
 
 	for val := range ch {
 		log.Println(val)
